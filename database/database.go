@@ -7,8 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func NewDatabase() *gorm.DB {
-	dsn := "root:secret@tcp(127.0.0.1:3306)/mydb?charset=utf8mb4&parseTime=True&loc=Local"
+func NewDatabase(dsn string) *gorm.DB {
 
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {

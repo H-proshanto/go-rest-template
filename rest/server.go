@@ -32,10 +32,10 @@ func (s *Server) setupRouter() {
 	s.router = router
 
 	router.GET("/api/test", test)
+	router.POST("/api/students", s.createStudent)
 	router.GET("/api/students/:id", s.getStudent)
-	router.PATCH("/api/students/:id", s.createStudent)
-	router.DELETE("/api/students/:id", s.updateStudent)
-	router.POST("/api/students/:id", s.deleteStudent)
+	router.PATCH("/api/students/:id", s.updateStudent)
+	router.DELETE("/api/students/:id", s.deleteStudent)
 }
 
 func (s *Server) Start() error {
