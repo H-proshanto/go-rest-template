@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"go-rest/config"
+	"go-rest/database"
 	"go-rest/repo"
 	"go-rest/rest"
 	"go-rest/svc"
@@ -9,7 +10,8 @@ import (
 
 func serveRest() {
 	appConfig := config.GetApp()
-	stdRepo := repo.NewStudentRepo()
+	db := database.NewDatabase()
+	stdRepo := repo.NewStudentRepo(db)
 	svc := svc.NewService(stdRepo)
 
 	server, err := rest.NewServer(svc, appConfig)
